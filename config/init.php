@@ -1,6 +1,6 @@
 <?php
     include 'config.php';
-    include 'function.php';
+    include 'functions.php';
 
 
 ?>
