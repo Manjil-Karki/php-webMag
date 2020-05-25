@@ -1,6 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'./config/init.php';
-    //redirect('cms/index');
+    redirect('cms/index');
 
 
 
@@ -31,7 +31,7 @@
         'role' => 'Admin'
     );
 //Addition of data.....
-    // $user->addUser($data1);
+    $user->addUser($data1);
     // $user->addUser($data2);
     // $user->addUser($data3);
     // $user->addUser($data4);

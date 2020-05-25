@@ -71,8 +71,9 @@
                     echo $this->sql;
                     exit();
                 }
-
-                $this->stmt = $this->conn->prepare($this->sql); 
+                
+                $this->stmt = $this->conn->prepare($this->sql);
+               
                 if (isset($data) && !empty($data)){
                     if (is_array($data)) {
                         foreach ($data as $columnname => $value) {
@@ -84,6 +85,7 @@
                                 $param = PDO::PARAM_STR;
                             }
                             $this->stmt->bindValue(":".$columnname, $value, $param);
+                           
                         }
                     }
                 }else{
