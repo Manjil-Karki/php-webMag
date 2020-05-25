@@ -26,6 +26,9 @@
                                         'session_token' => $token
                                     );
                                     $user->updateDataByEmail($data, $_SESSION['user_email']);
+                                    if(isset($_POST['rememberme']) && !empty($_POST['rememberme'])){
+                                        setcookie('_auth_user', $token, time()+(86400*7), '/');
+                                    }
                                     redirect('../index', 'success', 'Welcome to dashboard');
                                 }else{
                                     redirect('../login', 'error', 'You are not a valid user');

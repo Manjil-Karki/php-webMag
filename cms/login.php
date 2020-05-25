@@ -1,4 +1,7 @@
-<?php include $_SERVER["DOCUMENT_ROOT"].'config/init.php'?>
+<?php 
+  include $_SERVER["DOCUMENT_ROOT"].'config/init.php';
+  include 'inc/checklogin.php';
+?>
 
 
 <!DOCTYPE html>
@@ -43,6 +46,9 @@
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Password" required="" name = "password"/>
+              </div>
+              <div>
+                <input type="checkbox" name = "rememberme"/>Remember Me
               </div>
               <div>
                 <button class="btn btn-default submit" type = "submit">Log In</button>                <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
