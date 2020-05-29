@@ -13,7 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Gentelella Alela! | Login</title>
 
     <!-- Bootstrap -->
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
