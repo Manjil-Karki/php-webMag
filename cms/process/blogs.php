@@ -9,7 +9,7 @@
             'categoryid' => (int)$_POST['categoryid'],
             'added_by' => $_SESSION['user_id']
         );
-        debugger($_POST);
+        
         if(isset($_FILES) && !empty($_FILES) && !empty($_FILES['image']) && $_FILES['image']['error'] == 0){
             $success = uploadImage($_FILES['image'], 'blog');
             if($success){

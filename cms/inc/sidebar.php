@@ -19,7 +19,17 @@
                       <li><a href="list-blogs">List Blogs</a></li>
                     </ul>
                   </li>
-                  
+                  <li><a><i class="fa fa-edit"></i> Ads <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="ads">Ads</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> Links <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="link">links</a></li>
+                    </ul>
+                  </li>
+
                   <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="tables.html">Tables</a></li>

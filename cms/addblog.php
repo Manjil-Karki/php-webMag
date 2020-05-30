@@ -45,7 +45,6 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
                     <form action="process/blogs" method = "post" enctype="multipart/form-data">
                       <div class="form-group col-md-8">
                         <label for="title"> Blog Title </label>
@@ -74,7 +73,7 @@
                             if($categories){
                               foreach ($categories as $key => $category){
                             ?>
-                              <option value="<?php echo($category->id) ?>" <?php echo ($blog_info->categoryid==$category->id)?"selected":""; ?>><?php echo $category->categoryname; ?></option>
+                              <option value="<?php echo($category->id) ?>" <?php if(isset($blog_info->id) && !empty($blog_info->id)){echo ($blog_info->categoryid == $category->id)?"selected":"";}; ?>><?php echo $category->categoryname; ?></option>
                             <?php
                               }
                             }

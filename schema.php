@@ -54,6 +54,34 @@
 						created_date datetime default current_timestamp,
 						updated_date datetime on update current_timestamp
 					)
+			",
+			'ads' => "
+				CREATE TABLE IF NOT EXISTS ads
+					(
+						id int not null AUTO_INCREMENT PRIMARY KEY,
+						title varchar(50),
+						url varchar(1024),
+						type enum('Wide', 'Simple') default 'Wide',
+						
+						image varchar(50),
+						added_by int,
+						status enum('Active','Passive') default 'Active',
+						created_date datetime default current_timestamp,
+						updated_date datetime on update current_timestamp
+					)
+			",
+			'links' => "
+				CREATE TABLE IF NOT EXISTS links
+					(
+						id int not null AUTO_INCREMENT PRIMARY KEY,
+						name varchar(50),
+						url varchar(1024),
+								
+						added_by int,
+						status enum('Active','Passive') default 'Active',
+						created_date datetime default current_timestamp,
+						updated_date datetime on update current_timestamp
+					)
 			"
 		);
 
