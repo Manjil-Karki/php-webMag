@@ -1,23 +1,23 @@
 <?php
-    class category extends database{
+    class archive extends database{
         function __construct(){
-            $this->table = 'categories';
+            $this->table = 'archives';
             database :: __construct();
         }
-        public function addCategory($data, $is_die = false){
+        public function addArchive($data, $is_die = false){
             return $this->addData($data, $is_die);
         }
-    public function getCategoryById($category_id, $is_die = false){
+    public function getArchiveById($archive_id, $is_die = false){
         $args = array(
             'where' => array(
                 'or' => array(
-                    'id' => $category_id,
+                    'id' => $archive_id,
                 )                
             )
         );
         return $this->getData($args, $is_die);
     }
-    public function getAllCategories($is_die = false){
+    public function getAllArchives($is_die = false){
         $args = array(
             'where' => array(
                 'or' => array(
@@ -29,7 +29,7 @@
         return $this->getData($args, $is_die);
     }
 
-    public function updateCategoryById($data, $id, $is_die = false){
+    public function updateArchiveById($data, $id, $is_die = false){
         $args = array(
             'where' => array(
                 'or' => array(
@@ -40,7 +40,7 @@
         return $this->updataData($data, $args, $is_die);
     }
 
-    public function deleteCategoryById($id, $is_die = false){
+    public function deleteArchiveById($id, $is_die = false){
         $args = array(
             'where' => array(
                 'or' => array(

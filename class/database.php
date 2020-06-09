@@ -146,7 +146,9 @@
 
 
                 if (isset($args['order']) && !empty($args['order'])) {
-                    if ($args['order'] == 'DECS') {
+                    if(is_array($args['order'])){
+                        $this->sql .= " order by  ".$args['order']['columnname']." ".$args['order']['orderType']." ";
+                    }else if ($args['order'] == 'DECS') {
                         $this->sql .= " order by id DESC";
                     }else{
                         $this->sql .= " order by id ASC";
@@ -411,4 +413,30 @@
         }
     }
 
-?>
+
+
+
+
+// $args = array(
+			// 	'fields' => array('id','username','email','password'),
+			// 	'where' => array(
+			// 			'and' => array(
+			// 				columnname => value,
+			// 				columnname => value,	
+			// 			),
+			// 			'or' => array(
+			// 				columnname => value,
+			// 				columnname => value,	
+			// 			)
+			// 		)
+			// 	'order' => array(
+					// 	'columnname'=>'view',
+					// 	'orderType'=>'ASC|DESC'
+					// ),
+			// 	'limit' => array(
+			// 				'offset' => 6,
+			// 				'no_of_data' =>7	
+			// 	 		),
+
+            // );
+            ?>

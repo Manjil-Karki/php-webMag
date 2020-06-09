@@ -60,7 +60,7 @@
                         );
                         $success = $blog->updateBlogById($data, $blog_id);
                         if ($success) {
-                            redirect('../list-blog', 'success', 'blog deletd successfully');
+                            redirect('../list-blogs', 'success', 'blog deletd successfully');
                         }else{
                             redirect('../addblog', 'error', 'Data cannot be deleted');
                         }

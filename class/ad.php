@@ -28,6 +28,30 @@
         return $this->getData($args, $is_die);
     }
 
+    public function getAllSimpleAds($is_die = false){
+        $args = array(
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active',
+                    'type' => 'Simple'
+                )                
+            )
+        );
+        return $this->getData($args, $is_die);
+    }
+
+    public function getAllWideAds($is_die = false){
+        $args = array(
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active',
+                    'type' => 'Wide'
+                )                
+            )
+        );
+        return $this->getData($args, $is_die);
+    }
+
     public function updateAdById($data, $id, $is_die = false){
         $args = array(
             'where' => array(
