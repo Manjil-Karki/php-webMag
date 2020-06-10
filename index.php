@@ -204,7 +204,6 @@
 						<!-- /post widget -->
 						<?php 
 							include 'inc/simpleAd.php';
-							$thumbnail = UPLOAD_URL.'blog/'.$blog->image;
 						?>
 						
 						
@@ -272,10 +271,11 @@
 									<h2>Most Read</h2>
 								</div>
 							</div>
-
+							<div id="load-more">
 							<?php
+								$Blog = new blogs();
 								$blogs = $Blog->getMostReadBlogsWithLimit(0, 4);
-								if($blog){
+								if($blogs){
 									foreach($blogs as $key => $blog){
 										if(isset($blog->image) && !empty($blog->image) && file_exists(UPLOAD_PATH.'blog/'.$blog->image)){
 											$thumbnail = UPLOAD_URL.'blog/'.$blog->image;
@@ -283,8 +283,6 @@
 											$thumbnail = UPLOAD_URL.'noimage.png';
 										}
 							?>
-
-
 											<!-- post -->
 											<div class="col-md-12">
 												<div class="post post-row">
@@ -300,14 +298,17 @@
 												</div>
 											</div>
 											<!-- /post -->
-
 							<?php
 									}
+								}else{
+									echo "The end";
 								}							
-							?>												
+							?>
+							
+							</div>												
 							<div class="col-md-12">
 								<div class="section-row">
-									<button class="primary-button center-block">Load More</button>
+									<button class="primary-button center-block" id="load-more-btn">Load More</button>
 								</div>
 							</div>
 						</div>

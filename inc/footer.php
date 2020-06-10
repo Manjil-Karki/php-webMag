@@ -37,10 +37,18 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 								<div class="footer-widget">
 									<h3 class="footer-title">Catagories</h3>
 									<ul class="footer-links">
-										<li><a href="category.html">Web Design</a></li>
-										<li><a href="category.html">JavaScript</a></li>
-										<li><a href="category.html">Css</a></li>
-										<li><a href="category.html">Jquery</a></li>
+									<?php
+										$Category = new category();
+										$categories= $Category->getAllCategories();
+										if($categories){
+											foreach ($categories as $key => $category) {
+									?>										
+										<li><a href="category?id=<?php echo $category->id?>"><?php echo $category->categoryname?></a></li>
+									<?php
+											}
+
+										}
+									?>
 									</ul>
 								</div>
 							</div>
@@ -93,6 +101,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					}
 					$("#myList li").filter(function() {
 						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+					});
+				});
+				post = 3;
+				$('#load-more-btn').click(function(){
+					post = post + 4;
+					$('#load-more').load("inc/loadMostread.php", {
+						offset: post
 					});
 				});
 			});

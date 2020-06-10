@@ -1,6 +1,6 @@
 <?php 
 	include $_SERVER['DOCUMENT_ROOT'].'config/init.php';
-	$header = $bread = 'Blank';
+	$header = $bread = 'Archieve';
     include 'inc/header.php';
     
     if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -29,10 +29,6 @@
 				<div class="row">
 					
 					<div class="col-md-8">
-                        <?php
-                            include 'inc/simpleAd.php';
-                        ?>
-
 						<!-- post widget -->
 						<div class="aside-widget">
 							<div class="section-title">
@@ -65,6 +61,11 @@
 						<!-- /post widget -->
 					</div>
 					<!-- /aside -->
+                    <div class="col-md-4">
+                    <?php
+                            include 'inc/simpleAd.php';
+                        ?>
+                    </div>
 				</div>
 				<!-- /row -->
 			</div>
