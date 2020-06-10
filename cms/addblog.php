@@ -8,7 +8,7 @@
     if (isset($_GET['id']) && !empty($_GET['id'])) {
       $blog_id = (int)$_GET['id'];
       if ($blog_id) {
-          $act = substr(md5("Edit_Blog-".$blog_id.$_SESSION['token']), 5, 20);
+          $act = substr(md5("Edit-Blog-".$blog_id.$_SESSION['token']), 5, 20);
         }if ($act = $_GET['act']) {
           $Blog = new blogs();
           $blog_info = $Blog->getBlogById($blog_id);

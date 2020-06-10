@@ -17,7 +17,8 @@
                         '(SELECT categoryname from categories where id = categoryid) as category',
                         'view',
                         'image',
-                        'created_date'],
+                        'created_date',
+                        'added_by'],
             'where' => array(
                 'or' => array(
                     'id' => $blog_id,
@@ -61,6 +62,118 @@
         );
         return $this->getData($args, $is_die);
     }
+
+    public function getMostRecentBlogsWithLimit($offset, $no_of_data, $is_die = false){
+        $args = array(
+            'fields' => ['id',
+                        'title',
+                        'content',
+                        'featured',
+                        'categoryid',
+                        '(SELECT categoryname from categories where id = categoryid) as category',
+                        'view',
+                        'image',
+                        'created_date'],
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active'
+                )            
+            ),
+            'order' => array(
+                'columnname' => 'created_date',
+                'orderType' => 'DESC'
+            ),
+            'limit' => array(
+                'offset' => $offset,
+                'no_of_data' => $no_of_data
+            )    
+        );
+        return $this->getData($args, $is_die);
+    }
+
+    public function getMostReadBlogsWithLimit($offset, $no_of_data, $is_die = false){
+        $args = array(
+            'fields' => ['id',
+                        'title',
+                        'content',
+                        'featured',
+                        'categoryid',
+                        '(SELECT categoryname from categories where id = categoryid) as category',
+                        'view',
+                        'image',
+                        'created_date'],
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active'
+                )            
+            ),
+            'order' => array(
+                'columnname' => 'view',
+                'orderType' => 'DESC'
+            ),
+            'limit' => array(
+                'offset' => $offset,
+                'no_of_data' => $no_of_data
+            )    
+        );
+        return $this->getData($args, $is_die);
+    }
+
+    public function getMostReadFeaturedBlogsWithLimit($offset, $no_of_data, $is_die = false){
+        $args = array(
+            'fields' => ['id',
+                        'title',
+                        'content',
+                        'featured',
+                        'categoryid',
+                        '(SELECT categoryname from categories where id = categoryid) as category',
+                        'view',
+                        'image',
+                        'created_date'],
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active',
+                    'featured' => 'Featured'
+                )            
+            ),
+            'order' => array(
+                'columnname' => 'view',
+                'orderType' => 'DESC'
+            ),
+            'limit' => array(
+                'offset' => $offset,
+                'no_of_data' => $no_of_data
+            )    
+        );
+        return $this->getData($args, $is_die);
+    }
+
+    public function getAllFeaturedBlogsWithLimit($offset, $no_of_data, $is_die = false){
+        $args = array(
+            'fields' => ['id',
+                        'title',
+                        'content',
+                        'featured',
+                        'categoryid',
+                        '(SELECT categoryname from categories where id = categoryid) as category',
+                        'view',
+                        'image',
+                        'created_date'],
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active',
+                    'featured' => 'Featured'
+                )                
+            ),
+            'limit' => array(
+                'offset' => $offset,
+                'no_of_data' => $no_of_data
+            )
+
+        );
+        return $this->getData($args, $is_die);
+    }
+
 
     public function getAllFeaturedBlogsByCategoryWithLimit($cat_id, $offset, $no_of_data, $is_die = false){
         $args = array(

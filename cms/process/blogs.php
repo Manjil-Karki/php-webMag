@@ -1,6 +1,6 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'config/init.php';
-    $blog = new blogs();
+    $blog = new blogs();   
     if ($_POST) {
         $data = array(
             'title' => sanitize($_POST['title']),
@@ -9,13 +9,13 @@
             'categoryid' => (int)$_POST['categoryid'],
             'added_by' => $_SESSION['user_id']
         );
-        
+
         if(isset($_FILES) && !empty($_FILES) && !empty($_FILES['image']) && $_FILES['image']['error'] == 0){
             $success = uploadImage($_FILES['image'], 'blog');
-            if($success){
-                $data['image'] = $success;
+            if($success){                
+                $data['image'] = $success;                
                 if (isset($_POST['old_img']) && !empty($_POST['old_img']) && file_exists(UPLOAD_PATH.'blog/'.$_POST['old_img'])) {
-					unlink(UPLOAD_PATH.'blog/'.$_POST['old_img']);
+                    unlink(UPLOAD_PATH.'blog/'.$_POST['old_img']);
 				}
             }else{
                 redirect ('../addblog', 'error', 'Error while uploading image');
@@ -23,6 +23,7 @@
         }
 
         if(isset($_POST['id']) && !empty($_POST['id'])){
+            
             $act = 'updat';
             $blog_id = (int)$_POST['id'];
         }else{

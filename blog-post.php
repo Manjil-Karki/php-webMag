@@ -172,34 +172,27 @@
 							<div class="section-title">
 								<h2>Most Read</h2>
 							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./assets/img/widget-1.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./assets/img/widget-2.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./assets/img/widget-3.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-								</div>
-							</div>
-
-							<div class="post post-widget">
-								<a class="post-img" href="blog-post.html"><img src="./assets/img/widget-4.jpg" alt=""></a>
-								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-								</div>
-							</div>
+							<?php
+								$blogs = $Blog->getMostReadBlogsWithLimit(0,4);
+								if($blogs){
+									foreach ($blogs as $key => $blog) {
+										if(isset($blog->image) && !empty($blog->image) && file_exists(UPLOAD_PATH.'blog/'.$blog->image)){
+											$thumbnail = UPLOAD_URL.'blog/'.$blog->image;
+										}else{
+											$thumbnail = UPLOAD_URL.'noimage.png';
+										}
+							?>
+									<div class="post post-widget">
+										<a class="post-img" href="blog-post?id=<?php echo $blog->id?>"><img src="<?php echo $thumbnail?>" alt=""></a>
+										<div class="post-body">
+											<h3 class="post-title"><a href="blog-post?id=<?php echo $blog->id?>"><?php echo $blog->title?></a></h3>
+										</div>
+									</div>
+							<?php
+									}
+								}
+							
+							?>
 						</div>
 						<!-- /post widget -->
 
@@ -208,27 +201,33 @@
 							<div class="section-title">
 								<h2>Featured Posts</h2>
 							</div>
-							<div class="post post-thumb">
-								<a class="post-img" href="blog-post.html"><img src="./assets/img/post-2.jpg" alt=""></a>
-								<div class="post-body">
-									<div class="post-meta">
-										<a class="post-category cat-3" href="#">Jquery</a>
-										<span class="post-date">March 27, 2018</span>
-									</div>
-									<h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-								</div>
-							</div>
+
+							<?php
+								$blogs = $Blog->getAllFeaturedBlogsWithLimit(0, 2);
+								if($blogs){
+									foreach($blogs as $key => $blog){									
+										if(isset($blog->image) && !empty($blog->image) && file_exists(UPLOAD_PATH.'blog/'.$blog->image)){
+											$thumbnail = UPLOAD_URL.'blog/'.$blog->image;
+										}else{
+											$thumbnail = UPLOAD_URL.'noimage.png';
+										}
+							?>
 
 							<div class="post post-thumb">
-								<a class="post-img" href="blog-post.html"><img src="./assets/img/post-1.jpg" alt=""></a>
+								<a class="post-img" href="blog-post?id=<?php echo $blog->id?>"><img src="<?php echo $thumbnail?>" alt=""></a>
 								<div class="post-body">
 									<div class="post-meta">
-										<a class="post-category cat-2" href="#">JavaScript</a>
-										<span class="post-date">March 27, 2018</span>
+										<a class="post-category <?php echo CAT_COLOR[$blog->categoryid%4]?>" href="category?id=<?php echo $blog->categoryid?>"><?php echo $blog->category?></a>
+										<span class="post-date"><?php echo date("M d, Y", strtotime($blog->created_date))?></span>
 									</div>
-									<h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
+									<h3 class="post-title"><a href="blog-post?id=<?php echo $blog->id?>"><?php echo $blog->title?></a></h3>
 								</div>
 							</div>
+							<?php
+									}
+								}
+							?>
+							
 						</div>
 						<!-- /post widget -->
 						

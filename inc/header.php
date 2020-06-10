@@ -97,26 +97,29 @@
 					<!-- widget posts -->
 					<div class="section-row">
 						<h3>Recent Posts</h3>
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src = "./assets/img/widget-2.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design Mockup Into Code Automatically</a></h3>
-							</div>
-						</div>
+						<?php 
+							$Blog = new blogs();
+							$blogs = $Blog->getMostRecentBlogsWithLimit(0, 3);
+							if($blogs){
+								foreach ($blogs as $key => $blog) {
+									if(isset($blog->image) && !empty($blog->image) && file_exists(UPLOAD_PATH.'blog/'.$blog->image)){
+										$thumbnail = UPLOAD_URL.'blog/'.$blog->image;
+									}else{
+										$thumbnail = UPLOAD_URL.'noimage.png';
+									}
+						?>
+									<div class="post post-widget">
+										<a class="post-img" href="blog-post?id=<?php echo $blog->id?>"><img src = "<?php echo $thumbnail?>" alt=""></a>
+										<div class="post-body">
+											<h3 class="post-title"><a href="blog-post?id=<?php echo $blog->id?>"><?php echo $blog->title?></a></h3>
+										</div>
+									</div>
+						<?php		
+								}
+							}
+							
 
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src = "./assets/img/widget-3.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend Development Block!</a></h3>
-							</div>
-						</div>
-
-						<div class="post post-widget">
-							<a class="post-img" href="blog-post.html"><img src = "./assets/img/widget-4.jpg" alt=""></a>
-							<div class="post-body">
-								<h3 class="post-title"><a href="blog-post.html">Tell-A-Tool: Guide To Web Design And Development Tools</a></h3>
-							</div>
-						</div>
+						?>						
 					</div>
 					<!-- /widget posts -->
 
