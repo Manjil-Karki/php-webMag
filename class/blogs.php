@@ -63,6 +63,23 @@
         return $this->getData($args, $is_die);
     }
 
+
+    public function getAllBlogsByCategory($cat_id, $is_die = false){
+        $args = array(
+            'fields' => ['id',
+                        'title'
+                        ],
+            'where' => array(
+                'and' => array(
+                    'status' => 'Active',
+                    'categoryid'=> $cat_id
+                )                
+            )
+        );
+        return $this->getData($args, $is_die);
+    }
+
+
     public function getMostRecentBlogsWithLimit($offset, $no_of_data, $is_die = false){
         $args = array(
             'fields' => ['id',

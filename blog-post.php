@@ -147,9 +147,8 @@
 										<div class="form-group">
 											<textarea class="input" name="message" placeholder="Message"></textarea>
 										</div>
-										<input type = "hidden" name="commentid" id = "commentid"value=<?php echo $blog_id?>>
-										<input type = "hidden" name="blogid" value=<?php echo $blog_id?>>
-										
+										<input type = "hidden" name="commentid" id = "commentid"value="">
+										<input type = "hidden" name="blogid" value=<?php echo $blog_id?>>										
 										<button class="primary-button" type="submit">Submit</button>
 									</div>
 								</div>

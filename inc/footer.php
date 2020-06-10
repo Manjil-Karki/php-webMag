@@ -51,9 +51,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 						<div class="footer-widget">
 							<h3 class="footer-title">Join our Newsletter</h3>
 							<div class="footer-newsletter">
-								<form>
-									<input class="input" type="email" name="newsletter" placeholder="Enter your email">
-									<button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+								<form action="process/newsletter" method="post">
+									<input class="input" type="email" name="email" placeholder="Enter your email">
+									<button class="newsletter-btn" type="submit"><i class="fa fa-paper-plane"></i></button>
 								</form>
 							</div>
 							<ul class="footer-social">
@@ -83,6 +83,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		<script src="./assets/js/jquery.min.js"></script>
 		<script src="./assets/js/bootstrap.min.js"></script>
 		<script src="./assets/js/main.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#listSearch").on("keyup", function() {
+					var value = $(this).val().toLowerCase();
+					$('#myList').removeClass('hidden');
+					if(value == ''){
+						$('#myList').addClass('hidden');
+					}
+					$("#myList li").filter(function() {
+						$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+					});
+				});
+			});
+		</script>
 
 	</body>
 </html>

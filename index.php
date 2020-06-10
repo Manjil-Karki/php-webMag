@@ -169,6 +169,7 @@
 
 						<!-- post widget -->
 						<div class="aside-widget">
+						
 							<div class="section-title">
 								<h2>Featured Posts</h2>
 							</div>
@@ -201,8 +202,12 @@
 							?>
 								</div>
 						<!-- /post widget -->
+						<?php 
+							include 'inc/simpleAd.php';
+							$thumbnail = UPLOAD_URL.'blog/'.$blog->image;
+						?>
 						
-						<?php include 'inc/simpleAd.php';?>
+						
 					</div>
 				</div>
 				<!-- /row -->

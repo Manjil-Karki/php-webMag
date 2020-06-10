@@ -111,6 +111,16 @@
 					created_date datetime default current_timestamp,
 					updated_date datetime on update current_timestamp
 				)
+			",
+			'subscriber' => "
+				CREATE TABLE IF NOT EXISTS subscribers
+				(
+					id int not null AUTO_INCREMENT PRIMARY KEY,
+					email varchar(100),
+					status enum('Active','Passive') default 'Active',					
+					created_date datetime default current_timestamp,
+					updated_date datetime on update current_timestamp
+				)
 			"
 		);
 

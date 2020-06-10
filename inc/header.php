@@ -71,7 +71,32 @@
 							<button class="aside-btn"><i class="fa fa-bars"></i></button>
 							<button class="search-btn"><i class="fa fa-search"></i></button>
 							<div class="search-form">
-								<input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
+								<input class="search-input" id="listSearch" type="text" name="search" placeholder="Enter Your Search ...">
+								<div class="container">									
+									<br>
+									<ul class="list-group hidden" id="myList" >
+										<?php
+											$categories= $Category->getAllCategories();
+											if($categories){
+												foreach ($categories as $key => $category) {
+									?>
+													<li class="list-group-item"><a href="category?id=<?php echo $category->id?>"><?php echo $category->categoryname?></a></li>
+									<?php
+													$Blog = new blogs();
+													$blogs = $Blog->getAllBlogsByCategory($category->id);
+													if($blogs){
+														foreach ($blogs as $key => $blog) {
+									?>
+															<li class="list-group-item"><a href="blog-post?id=<?php echo $blog->id?>"><?php echo $blog->title?></a></li>
+									<?php
+														}
+													}
+												}
+											}
+											
+										?>										
+									</ul>
+								</div>
 								<button class="search-close"><i class="fa fa-times"></i></button>
 							</div>
 						</div>
@@ -98,7 +123,7 @@
 					<div class="section-row">
 						<h3>Recent Posts</h3>
 						<?php 
-							$Blog = new blogs();
+							
 							$blogs = $Blog->getMostRecentBlogsWithLimit(0, 3);
 							if($blogs){
 								foreach ($blogs as $key => $blog) {
