@@ -270,8 +270,7 @@
 								<div class="section-title">
 									<h2>Most Read</h2>
 								</div>
-							</div>
-							<div id="load-more">
+							</div>			
 							<?php
 								$Blog = new blogs();
 								$blogs = $Blog->getMostReadBlogsWithLimit(0, 4);
@@ -284,7 +283,7 @@
 										}
 							?>
 											<!-- post -->
-											<div class="col-md-12">
+											<div class="col-md-12 load-more-post">
 												<div class="post post-row">
 													<a class="post-img" href="blog-post?id=<?php echo $blog->id?>"><img src="<?php echo $thumbnail?>" alt=""></a>
 													<div class="post-body">
@@ -303,9 +302,7 @@
 								}else{
 									echo "The end";
 								}							
-							?>
-							
-							</div>												
+							?>																			
 							<div class="col-md-12">
 								<div class="section-row">
 									<button class="primary-button center-block" id="load-more-btn">Load More</button>

@@ -120,7 +120,7 @@
                         'image',
                         'created_date'],
             'where' => array(
-                'and' => array(
+                'or' => array(
                     'status' => 'Active'
                 )            
             ),

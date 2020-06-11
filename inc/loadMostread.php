@@ -1,8 +1,11 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'].'config/init.php';
+    define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
     $offset = $_POST['offset'];
     $Blog = new blogs();
-    $blogs = $Blog->getMostReadBlogsWithLimit($offset, 4);
+    for ($i=0; $i <= 3; $i++) {     
+    
+    $blogs = $Blog->getMostReadBlogsWithLimit($offset, 1);
     if($blogs){
         foreach($blogs as $key => $blog){
             if(isset($blog->image) && !empty($blog->image) && file_exists(UPLOAD_PATH.'blog/'.$blog->image)){
@@ -12,7 +15,7 @@
             }
 ?>
                 <!-- post -->
-                <div class="col-md-12">
+                <div class="col-md-12 load-more-post">
                     <div class="post post-row">
                         <a class="post-img" href="blog-post?id=<?php echo $blog->id?>"><img src="<?php echo $thumbnail?>" alt=""></a>
                         <div class="post-body">
@@ -28,5 +31,9 @@
                 <!-- /post -->
 <?php
         }
-    }							
+        $offset = $offset + 1;
+    }else{
+        break;
+    }
+}							
 ?>

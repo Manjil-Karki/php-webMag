@@ -105,10 +105,20 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				});
 				post = 3;
 				$('#load-more-btn').click(function(){
-					post = post + 4;
-					$('#load-more').load("inc/loadMostread.php", {
-						offset: post
-					});
+					post = post + 3;
+						$.ajax({
+						url: 'inc/loadMostread.php',
+						type: 'post',
+						data: {offset: post},						
+						success: function(response){
+							$("div.load-more-post:last").after(response).show();
+							if(response.length == 0){
+								$('#load-more-btn').text('All caught up');
+								$('#load-more-btn').removeClass('primary-button');
+								$('#load-more-btn').addClass('btn-success');
+							}
+						}
+					});					
 				});
 			});
 		</script>
