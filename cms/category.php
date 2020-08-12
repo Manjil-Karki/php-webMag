@@ -49,7 +49,7 @@
                                     <td><?php echo $value -> categoryname?></td>
                                     <td><?php echo html_entity_decode($value -> description)?></td>
                                     <td>
-                                    <a href="javascript:;" class="btn btn-info" onclick="editCategory(this);" data-category_info='<?php echo(json_encode($value))?>'><i class="fa fa-pencil"></i></a>    
+                                    <a href="javascript:;" class="btn btn-info" onclick="editCategory(this);" data-category_info='<?php echo(json_encode($value, JSON_HEX_APOS))?>'><i class="fa fa-pencil"></i></a>    
                                     <a href="process/category?id=<?php echo($value -> id)?>&amp;act=<?php echo substr(md5("Delete-Category-".$value->id.$_SESSION['token']), 5, 20)?>" class = "btn btn-danger" onclick = "return continue('Are u sure u want to delete this category?');"> <i class = "fa fa-trash"></i> </a>
                                     </td>
                                   </tr>
